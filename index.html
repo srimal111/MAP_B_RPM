@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #locationButton {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Map Navigation</h1>
+<p>Click the button to open the map and navigate to Mahaweli Authority R.P.M Office walikanda</p>
+
+<button id="locationButton">Open Map</button>
+
+<script>
+    document.getElementById('locationButton').addEventListener('click', function() {
+        // Check if Geolocation is supported
+        if (navigator.geolocation) {
+            // Get current location
+            navigator.geolocation.getCurrentPosition(function(position) {
+                // Get coordinates
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+
+                // Open map app with navigation to Mahaoya Hospital
+                const destination = encodeURI("Mahaweli Authority R.P.M Office");
+                const mapUrl = `https://maps.app.goo.gl/vSvPiRWP58pvg3pV9`;
+                
+                // Open map in a new tab
+                window.open(mapUrl, '_blank');
+            }, function(error) {
+                console.error('Error getting location:', error.message);
+                alert('Error getting your location. Please make sure location services are enabled.');
+            });
+        } else {
+            alert('Geolocation is not supported by your browser.');
+        }
+    });
+</script>
+
+</body>
+</html>
