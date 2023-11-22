@@ -9,18 +9,40 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
+            background: url('your-background-image.jpg') center/cover no-repeat; /* Replace 'your-background-image.jpg' with the actual path to your background image */
+            color: #fff;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1, p {
+            margin: 0 0 20px;
         }
 
         #locationButton {
-            padding: 10px;
+            padding: 15px 30px;
             font-size: 16px;
             cursor: pointer;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #locationButton:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
 
-<h2>Map Navigation</h2>
+<h1>Map Navigation</h1>
+
 <button id="locationButton">Open Map</button>
 
 <script>
@@ -34,8 +56,8 @@
                 const lon = position.coords.longitude;
 
                 // Open map app with navigation to Mahaoya Hospital
-                const destination = encodeURI("Mahaweli Authority R.P.M Office");
-                const mapUrl = `https://maps.app.goo.gl/vSvPiRWP58pvg3pV9`;
+                const destination = encodeURI("Mahaoya Hospital, Eastern Province, Sri Lanka");
+                const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${destination}&destination_place_id=PLACE_ID`;
                 
                 // Open map in a new tab
                 window.open(mapUrl, '_blank');
