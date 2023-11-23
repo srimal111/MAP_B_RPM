@@ -22,53 +22,35 @@
         h1, p {
             margin: 0 0 20px;
         }
-
-        #locationButton {
-            padding: 15px 30px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        #locationButton:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 <body>
 
 <h1>Map Navigation</h1>
-
-<button id="locationButton">Open Map</button>
+<p>Opening the map and navigating to Mahaoya Hospital in the Eastern Province of Sri Lanka.</p>
 
 <script>
-    document.getElementById('locationButton').addEventListener('click', function() {
-        // Check if Geolocation is supported
-        if (navigator.geolocation) {
-            // Get current location
-            navigator.geolocation.getCurrentPosition(function(position) {
-                // Get coordinates
-                const lat = position.coords.latitude;
-                const lon = position.coords.longitude;
+    // Check if Geolocation is supported
+    if (navigator.geolocation) {
+        // Get current location
+        navigator.geolocation.getCurrentPosition(function(position) {
+            // Get coordinates
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
 
-                // Open map app with navigation to Mahaoya Hospital
-                const destination = encodeURI("Mahaoya Hospital, Eastern Province, Sri Lanka");
-                const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${destination}&destination_place_id=PLACE_ID`;
-                
-                // Open map in a new tab
-                window.open(mapUrl, '_blank');
-            }, function(error) {
-                console.error('Error getting location:', error.message);
-                alert('Error getting your location. Please make sure location services are enabled.');
-            });
-        } else {
-            alert('Geolocation is not supported by your browser.');
-        }
-    });
+            // Open map app with navigation to Mahaoya Hospital
+            const destination = encodeURI("Mahaoya Hospital, Eastern Province, Sri Lanka");
+            const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${destination}&destination_place_id=PLACE_ID`;
+            
+            // Open map in a new tab
+            window.open(mapUrl, '_blank');
+        }, function(error) {
+            console.error('Error getting location:', error.message);
+            alert('Error getting your location. Please make sure location services are enabled.');
+        });
+    } else {
+        alert('Geolocation is not supported by your browser.');
+    }
 </script>
 
 </body>
